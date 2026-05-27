@@ -4,36 +4,45 @@ using PhotoApp.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler =
+            System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+    })
+    .ConfigureApiBehaviorOptions(options =>
+    {
+        options.SuppressModelStateInvalidFilter = false;
+    });
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
         options.TokenValidationParameters =
-            new TokenValidationParameters
-            {
-                ValidateIssuer = true,
+    new TokenValidationParameters
+    {
+        ValidateIssuer = true,
 
-                ValidateAudience = true,
+        ValidateAudience = false,
 
-                ValidateLifetime = true,
+        ValidateLifetime = true,
 
-                ValidateIssuerSigningKey = true,
+        ValidateIssuerSigningKey = true,
 
-                ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
 
-                ValidAudience = builder.Configuration["Jwt:Issuer"],
-
-                IssuerSigningKey = new SymmetricSecurityKey(
-                    Encoding.UTF8.GetBytes(
-                        builder.Configuration["Jwt:Key"]))
-            };
+        IssuerSigningKey = new SymmetricSecurityKey(
+            Encoding.UTF8.GetBytes(
+                builder.Configuration["Jwt:Key"]))
+    };
     });
 
-builder.Services.AddControllers();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(
@@ -84,6 +93,21 @@ builder.Services.AddSwaggerGen(options =>
             }
         });
 });
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy =>
+        {
+            policy.AllowAnyOrigin()
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
+
+builder.Services.AddRouting(options =>
+{
+    options.LowercaseUrls = true;
+});
 
 var app = builder.Build();
 
@@ -97,6 +121,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseStaticFiles();
+
+app.UseCors("AllowAll");
 
 app.UseAuthentication();
 

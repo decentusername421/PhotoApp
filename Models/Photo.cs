@@ -13,5 +13,6 @@
         public int? AlbumId { get; set; }
 
         public Album? Album { get; set; }
+        public string? Description { get; set; }
     }
 }

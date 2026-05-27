@@ -78,5 +78,6 @@ namespace PhotoApp.Controllers
                 token
             });
         }
+
     }
 }
