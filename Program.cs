@@ -45,7 +45,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(
+    options.UseSqlite(
         builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<JwtService>();
