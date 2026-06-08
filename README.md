@@ -1,8 +1,10 @@
 📸 PhotoApp
+
 Nowoczesna aplikacja do zarządzania zdjęciami, albumami i udostępnieniami.
 Projekt zawiera backend (.NET 8 Web API) oraz frontend (iOS SwiftUI) w jednym repozytorium.
 
 ✨ Funkcjonalności
+
 🔐 Rejestracja i logowanie (JWT)
 🖼️ Upload zdjęć (multipart/form-data)
 📁 Albumy — tworzenie, usuwanie, przypisywanie zdjęć
@@ -11,6 +13,7 @@ Projekt zawiera backend (.NET 8 Web API) oraz frontend (iOS SwiftUI) w jednym re
 📱 Aplikacja iOS w SwiftUI (MVVM)
 
 🛠️ Technologie
+
 Backend
 .NET 8
 ASP.NET Core Web API
@@ -26,6 +29,7 @@ AsyncImage
 URLSession + async/await
 
 🔌 Endpointy API
+
 Auth
 Metoda	Endpoint	Opis
 POST	/api/auth/register	Rejestracja
