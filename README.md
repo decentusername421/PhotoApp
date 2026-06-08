@@ -1,42 +1,32 @@
 📸 PhotoApp
-Kompleksowa aplikacja do zarządzania zdjęciami, albumami i udostępnieniami — zbudowana jako hybrydowy projekt:
-Backend: ASP.NET Core Web API
-Frontend: SwiftUI (iOS)
+Nowoczesna aplikacja do zarządzania zdjęciami, albumami i udostępnieniami.
+Projekt zawiera backend (.NET 8 Web API) oraz frontend (iOS SwiftUI) w jednym repozytorium.
 
-🚀 Funkcjonalności
+✨ Funkcjonalności
+🔐 Rejestracja i logowanie (JWT)
+🖼️ Upload zdjęć (multipart/form-data)
+📁 Albumy — tworzenie, usuwanie, przypisywanie zdjęć
+🔗 Udostępnianie zdjęć innym użytkownikom
+👤 Obsługa wielu użytkowników
+📱 Aplikacja iOS w SwiftUI (MVVM)
 
-🔐 Authentication
-Rejestracja użytkownika
-Logowanie
-Hashowanie haseł (BCrypt)
+🛠️ Technologie
+Backend
+.NET 8
+ASP.NET Core Web API
+Entity Framework Core
+SQLite
 JWT Authentication
-Zabezpieczenie endpointów
-
-🖼️ Photos
-Pobieranie zdjęć użytkownika
-Upload zdjęć (multipart/form-data)
-Usuwanie zdjęć
-Dodawanie zdjęć do albumów
-
-📁 Albums
-Tworzenie albumów
-Usuwanie albumów
-Przypisywanie zdjęć do albumów
-
-🔗 Shares
-Udostępnianie zdjęć innym użytkownikom
-Usuwanie udostępnień
-
-🗄️ Struktura bazy danych
-
-User 1 --- * Photos
-User 1 --- * Albums
-Album 1 --- * Photos
-Photo 1 --- * Shares
+BCrypt
+Frontend
+SwiftUI
+MVVM
+PhotosPicker
+AsyncImage
+URLSession + async/await
 
 🔌 Endpointy API
-
-Authentication
+Auth
 Metoda	Endpoint	Opis
 POST	/api/auth/register	Rejestracja
 POST	/api/auth/login	Logowanie
@@ -44,7 +34,7 @@ POST	/api/auth/login	Logowanie
 
 Photos
 Metoda	Endpoint	Opis
-GET	/api/photos	Pobierz zdjęcia użytkownika
+GET	/api/photos	Pobierz zdjęcia
 POST	/api/photos/upload	Upload zdjęcia
 DELETE	/api/photos/{id}	Usuń zdjęcie
 PUT	/api/photos/{photoId}/album/{albumId}	Dodaj zdjęcie do albumu
@@ -64,22 +54,8 @@ GET	/api/shares	Pobierz udostępnione zdjęcia
 DELETE	/api/shares/{id}	Usuń udostępnienie
 
 
-🛠️ Technologie
-Backend
-C# .NET 8
-ASP.NET Core Web API
-Entity Framework Core
-SQLite
-JWT Authentication
-BCrypt
-Frontend
-SwiftUI
-MVVM
-AsyncImage
-PhotosPicker
-URLSession + async/await
-
 ▶️ Uruchamianie backendu
+
 1. Klonowanie repozytorium
 bash
 git clone https://github.com/decentusername421/PhotoApp.git
@@ -99,7 +75,6 @@ Ustaw adres backendu w ApiService
 Uruchom na simulatorze lub urządzeniu
 
 📦 Upload zdjęć
-Zdjęcia są:
-wysyłane jako multipart/form-data,
+zdjęcia wysyłane są jako multipart/form-data,
 zapisywane w folderze Uploads/,
-przechowywane w bazie jako URL.
+w bazie przechowywana jest ścieżka do pliku.
