@@ -113,9 +113,7 @@ bash
 
 dotnet run
 
-Swagger dostępny pod:
-
-https://localhost:<port>/swagger
+https://localhost:<port>
 
 📱 Uruchamianie frontendu (iOS)
 
@@ -124,11 +122,3 @@ Otwórz projekt w Xcode
 Ustaw adres backendu w ApiService
 
 Uruchom na simulatorze lub urządzeniu
-
-📦 Upload zdjęć
-
-zdjęcia wysyłane są jako multipart/form-data,
-
-zapisywane w folderze Uploads/,
-
-w bazie przechowywana jest ścieżka do pliku.
