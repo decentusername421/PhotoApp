@@ -27,33 +27,8 @@ Przypisywanie zdjęć do albumów
 Udostępnianie zdjęć innym użytkownikom
 Usuwanie udostępnień
 
-🧱 Architektura projektu
-Repozytorium zawiera foldery backendu i frontendu:
-Kod
-PhotoApp/
- ├── Auth/
- ├── Controllers/
- ├── DTOs/
- ├── Data/
- ├── Migrations/
- ├── Models/
- ├── Services/
- ├── Uploads/
- ├── ViewModels/        # SwiftUI
- ├── Views/             # SwiftUI
- ├── Assets.xcassets/   # SwiftUI
- ├── ContentView.swift  # SwiftUI
- ├── PhotoAppApp.swift  # SwiftUI
- ├── Program.cs         # Backend entry point
- ├── PhotoApp.csproj    # Backend project file
- ├── PhotoApp.sln       # Solution
- ├── appsettings.json
- ├── appsettings.Development.json
- ├── photoapp.db        # SQLite database
- └── README.md
- 
 🗄️ Struktura bazy danych
-Kod
+
 User 1 --- * Photos
 User 1 --- * Albums
 Album 1 --- * Photos
