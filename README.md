@@ -126,6 +126,9 @@ Ustaw adres backendu w ApiService
 Uruchom na simulatorze lub urządzeniu
 
 📦 Upload zdjęć
+
 zdjęcia wysyłane są jako multipart/form-data,
+
 zapisywane w folderze Uploads/,
+
 w bazie przechowywana jest ścieżka do pliku.
