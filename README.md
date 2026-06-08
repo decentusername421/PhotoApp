@@ -6,10 +6,15 @@ Projekt zawiera backend (.NET 8 Web API) oraz frontend (iOS SwiftUI) w jednym re
 ✨ Funkcjonalności
 
 🔐 Rejestracja i logowanie (JWT)
+
 🖼️ Upload zdjęć (multipart/form-data)
+
 📁 Albumy — tworzenie, usuwanie, przypisywanie zdjęć
+
 🔗 Udostępnianie zdjęć innym użytkownikom
+
 👤 Obsługa wielu użytkowników
+
 📱 Aplikacja iOS w SwiftUI (MVVM)
 
 🛠️ Technologie
