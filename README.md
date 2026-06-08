@@ -1,108 +1,130 @@
-Funkcjonalności
-Authentication
+📸 PhotoApp
+Kompleksowa aplikacja do zarządzania zdjęciami, albumami i udostępnieniami — zbudowana jako hybrydowy projekt:
+Backend: ASP.NET Core Web API
+Frontend: SwiftUI (iOS)
+
+🚀 Funkcjonalności
+
+🔐 Authentication
 Rejestracja użytkownika
-Logowanie użytkownika
-Hashowanie haseł przy użyciu BCrypt
+Logowanie
+Hashowanie haseł (BCrypt)
 JWT Authentication
 Zabezpieczenie endpointów
-Photos
+
+🖼️ Photos
 Pobieranie zdjęć użytkownika
-Upload zdjęć
+Upload zdjęć (multipart/form-data)
 Usuwanie zdjęć
 Dodawanie zdjęć do albumów
-Zapisywanie plików na dysku
-Albums
+
+📁 Albums
 Tworzenie albumów
-Pobieranie albumów użytkownika
 Usuwanie albumów
 Przypisywanie zdjęć do albumów
-Shares
+
+🔗 Shares
 Udostępnianie zdjęć innym użytkownikom
-Pobieranie udostępnionych zdjęć
 Usuwanie udostępnień
-Architektura projektu
-Backend/
-│
-├── Controllers/
-├── Models/
-├── DTOs/
-├── Data/
-├── Auth/
-├── Migrations/
-├── Uploads/
-├── Program.cs
-├── appsettings.json
-└── README.md
-Struktura bazy danych
-Relacje
+
+🧱 Architektura projektu
+Repozytorium zawiera foldery backendu i frontendu:
+Kod
+PhotoApp/
+ ├── Auth/
+ ├── Controllers/
+ ├── DTOs/
+ ├── Data/
+ ├── Migrations/
+ ├── Models/
+ ├── Services/
+ ├── Uploads/
+ ├── ViewModels/        # SwiftUI
+ ├── Views/             # SwiftUI
+ ├── Assets.xcassets/   # SwiftUI
+ ├── ContentView.swift  # SwiftUI
+ ├── PhotoAppApp.swift  # SwiftUI
+ ├── Program.cs         # Backend entry point
+ ├── PhotoApp.csproj    # Backend project file
+ ├── PhotoApp.sln       # Solution
+ ├── appsettings.json
+ ├── appsettings.Development.json
+ ├── photoapp.db        # SQLite database
+ └── README.md
+ 
+🗄️ Struktura bazy danych
+Kod
 User 1 --- * Photos
 User 1 --- * Albums
 Album 1 --- * Photos
 Photo 1 --- * Shares
-Endpointy API
+
+🔌 Endpointy API
+
 Authentication
-Register
-POST /api/auth/register
-Login
-POST /api/auth/login
+Metoda	Endpoint	Opis
+POST	/api/auth/register	Rejestracja
+POST	/api/auth/login	Logowanie
+
+
 Photos
-Get user photos
-GET /api/photos
-Upload photo
-POST /api/photos/upload
-Delete photo
-DELETE /api/photos/{id}
-Add photo to album
-PUT /api/photos/{photoId}/album/{albumId}
+Metoda	Endpoint	Opis
+GET	/api/photos	Pobierz zdjęcia użytkownika
+POST	/api/photos/upload	Upload zdjęcia
+DELETE	/api/photos/{id}	Usuń zdjęcie
+PUT	/api/photos/{photoId}/album/{albumId}	Dodaj zdjęcie do albumu
+
+
 Albums
-Get albums
-GET /api/albums
-Create album
-POST /api/albums
-Delete album
-DELETE /api/albums/{id}
+Metoda	Endpoint	Opis
+GET	/api/albums	Pobierz albumy
+POST	/api/albums	Utwórz album
+DELETE	/api/albums/{id}	Usuń album
+
+
 Shares
-Share photo
-POST /api/shares
-Get shared photos
-GET /api/shares
-Delete share
-DELETE /api/shares/{id}
+Metoda	Endpoint	Opis
+POST	/api/shares	Udostępnij zdjęcie
+GET	/api/shares	Pobierz udostępnione zdjęcia
+DELETE	/api/shares/{id}	Usuń udostępnienie
+
+
+🛠️ Technologie
+Backend
+C# .NET 8
+ASP.NET Core Web API
+Entity Framework Core
+SQLite
 JWT Authentication
+BCrypt
+Frontend
+SwiftUI
+MVVM
+AsyncImage
+PhotosPicker
+URLSession + async/await
 
-Autoryzacja odbywa się przy użyciu JWT.
-
-Nagłówek:
-
-Authorization: Bearer TOKEN
-Upload zdjęć
-
-Zdjęcia są:
-
-uploadowane przez multipart/form-data,
-zapisywane w folderze Uploads/,
-przechowywane w PostgreSQL jako URL.
-
-
-Uruchomienie projektu
+▶️ Uruchamianie backendu
 1. Klonowanie repozytorium
-git clone REPOSITORY_URL
-2. Konfiguracja bazy danych
-
-W pliku appsettings.json:
-
-{
-  "ConnectionStrings": {
-    "DefaultConnection":
-      "Host=localhost;Port=5432;Database=photoapp;Username=postgres;Password=1234"
-  }
-}
-3. Migracje
+bash
+git clone https://github.com/decentusername421/PhotoApp.git
+cd PhotoApp
+2. Migracje bazy
+bash
 dotnet ef database update
-4. Uruchomienie backendu
+3. Start API
+bash
 dotnet run
-Swagger
-
 Swagger dostępny pod:
+https://localhost:<port>/swagger
 
-https://localhost:PORT/swagger
+📱 Uruchamianie frontendu (iOS)
+Otwórz projekt w Xcode
+Ustaw adres backendu w ApiService
+Uruchom na simulatorze lub urządzeniu
+
+📦 Upload zdjęć
+Zdjęcia są:
+wysyłane jako multipart/form-data,
+zapisywane w folderze Uploads/,
+przechowywane w bazie jako URL.
