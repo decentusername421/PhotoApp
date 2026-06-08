@@ -113,7 +113,7 @@ bash
 
 dotnet run
 
-https://localhost:<port>
+https://localhost:< port >
 
 📱 Uruchamianie frontendu (iOS)
 
